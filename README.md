@@ -1,2 +1,16 @@
-# playwright-e2e-saucedemo
-Pruebas E2E con Playwright y TypeScript sobre SauceDemo, con Page Object Model y CI en GitHub Actions
+# Playwright E2E — SauceDemo
+
+Pruebas end-to-end con Playwright y TypeScript sobre [SauceDemo](https://www.saucedemo.com), un sitio de práctica para automatización.
+
+## Cómo ejecutarlo
+
+```bash
+npm install
+npx playwright install
+npx playwright test
+npx playwright show-report
+```
+
+## Estado
+
+En desarrollo: tests de login listos; Page Objects, inventario y checkout en progreso.
