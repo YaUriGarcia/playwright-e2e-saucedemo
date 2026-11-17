@@ -5,13 +5,11 @@ import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { users } from '../pages/data/users';
 
-test.describe('Carrito y checkout', () => {
+test.describe('Carrito y checkout', {tag: '@regression'}, () => {
   let inventory: InventoryPage;
   let cart: CartPage;
   let checkout: CheckoutPage;
 
-  // Estado inicial: usuario logueado con un producto en el carrito,
-  // para que cada test parta de un escenario reproducible.
   test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page);
     inventory = new InventoryPage(page);
@@ -29,8 +27,8 @@ test.describe('Carrito y checkout', () => {
     await expect(cart.itemNames).toHaveText('Sauce Labs Backpack');
   });
 
-  // Flujo feliz: datos válidos → confirmación final de la orden.
-  test('compra completa con datos válidos', async () => {
+
+  test('compra completa con datos válidos', {tag: '@smoke'}, async () => {
     await cart.startCheckout();
     await checkout.fillInfo('Ana', 'Pérez', '55000');
     await checkout.finishButton.click();
@@ -38,11 +36,26 @@ test.describe('Carrito y checkout', () => {
     await expect(checkout.completeHeader).toHaveText(/thank you for your order/i);
   });
 
-  // Validación de campo obligatorio: sin nombre, el checkout debe bloquearse.
+  
   test('checkout falla si falta el nombre', async () => {
     await cart.startCheckout();
     await checkout.fillInfo('', 'Pérez', '55000');
 
     await expect(checkout.errorMessage).toContainText(/first name is required/i);
   });
+
+  test('checkout falla si falta el apellido', async () => {
+    await cart.startCheckout();
+    await checkout.fillInfo('Ana', '', '55000');
+    
+    await expect(checkout.errorMessage).toContainText(/last name is required/i);
+  });
+  
+  test('checkout falla si falta el código postal', async () => {
+    await cart.startCheckout();
+    await checkout.fillInfo('Ana', 'Pérez', '');
+    
+    await expect(checkout.errorMessage).toContainText(/postal code is required/i);
+  });
+
 });

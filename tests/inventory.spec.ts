@@ -3,7 +3,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { users } from '../pages/data/users';
 
-test.describe('Inventario', () => {
+test.describe('Inventario', {tag: '@regression'}, () => {
   let inventory: InventoryPage;
 
   test.beforeEach(async ({ page }) => {
@@ -13,7 +13,7 @@ test.describe('Inventario', () => {
     await loginPage.login(users.standard.username, users.standard.password);
   });
 
-  test('muestra 6 productos', async () => {
+  test('muestra 6 productos', {tag: '@smoke'}, async () => {
     await expect(inventory.items).toHaveCount(6);
   });
 
