@@ -59,12 +59,6 @@ En cada push o pull request a `main` se ejecuta la suite completa y el reporte H
 - **Datos en `data/`:** los usuarios no están repetidos en cada test.
 - **Aserciones con espera automática:** se evitan pausas fijas.
 
-## Próximos pasos
-
-- Pruebas de regresión visual.
-- Ejecución en varios navegadores.
-- Publicar el reporte en GitHub Pages.
-
 ## Autor
 
 Yair Uriel García González
