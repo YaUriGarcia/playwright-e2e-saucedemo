@@ -3,7 +3,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
-import { users } from '../pages/data/users';
+import { users } from '../data/users';
 
 test.describe('Carrito y checkout', {tag: '@regression'}, () => {
   let inventory: InventoryPage;

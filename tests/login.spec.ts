@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import {LoginPage} from '../pages/LoginPage';
-import { users } from '../pages/data/users';
+import { users } from '../data/users';
 
 test.describe('Login', {tag: '@regression'}, () => {
   test('login exitoso con standard_user', {tag: '@smoke'}, async ({ page }) => {

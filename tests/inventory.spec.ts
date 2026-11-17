@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
-import { users } from '../pages/data/users';
+import { users } from '../data/users';
 
 test.describe('Inventario', {tag: '@regression'}, () => {
   let inventory: InventoryPage;
