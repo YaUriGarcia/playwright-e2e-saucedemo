@@ -9,6 +9,11 @@ export class InventoryPage {
   readonly sortSelect: Locator;
   readonly cartBadge: Locator;
   readonly cartLink: Locator;
+  readonly detailName: Locator;
+  readonly detailPrice: Locator;
+  readonly detailDesc: Locator;
+  readonly detailImage: Locator;
+  readonly backToProductsBtn: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -19,6 +24,11 @@ export class InventoryPage {
     this.sortSelect = page.locator('[data-test="product-sort-container"]');
     this.cartBadge = page.locator('[data-test="shopping-cart-badge"]');
     this.cartLink = page.locator('[data-test="shopping-cart-link"]');
+    this.detailName = page.locator('.inventory_details_name');
+    this.detailPrice = page.locator('.inventory_details_price');
+    this.detailDesc = page.locator('.inventory_details_desc');
+    this.detailImage = page.locator('.inventory_details_img');
+    this.backToProductsBtn = page.locator('[data-test="back-to-products"]');
   }
 
   async sortBy(option: 'az' | 'za' | 'lohi' | 'hilo') {
