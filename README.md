@@ -9,8 +9,8 @@ Suite de pruebas end-to-end con **Playwright** y **TypeScript** sobre [SauceDemo
 | Área | Cobertura |
 |---|---|
 | Login | Acceso exitoso, contraseña incorrecta, usuario vacío, contraseña vacía, usuario inexistente y usuario bloqueado |
-| Inventario | Listado de productos, ordenamiento por precio, agregar y quitar del carrito |
-| Carrito y checkout | Producto en el carrito, compra completa y validaciones de campos obligatorios |
+| Inventario | Listado de productos, ordenamiento por precio y alfabético (A-Z / Z-A), visualización del detalle de producto, agregar y quitar del carrito |
+| Carrito y checkout | Producto en el carrito, navegación de ida y vuelta (continue shopping), compra completa y validaciones de campos obligatorios |
 
 ## Stack
 
@@ -58,6 +58,7 @@ En cada push o pull request a `main` se ejecuta la suite completa y el reporte H
 - **Page Object Model:** separa los selectores de las pruebas y reduce el mantenimiento.
 - **Datos en `data/`:** los usuarios no están repetidos en cada test.
 - **Aserciones con espera automática:** se evitan pausas fijas.
+- **Validación de URLs dinámicas:** uso de expresiones regulares (RegEx) para comprobar rutas con IDs cambiantes (ej. detalle del producto).
 
 ## Autor
 
