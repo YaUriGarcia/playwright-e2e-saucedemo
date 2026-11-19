@@ -6,7 +6,7 @@ export class CartPage {
   readonly itemNames: Locator;
   readonly checkoutButton: Locator;
   readonly continueShoppingButton: Locator;
-  readonly startCheckoutButton: Locator
+  readonly startCheckoutButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
