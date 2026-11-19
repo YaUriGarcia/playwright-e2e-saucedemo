@@ -24,6 +24,8 @@ test.describe('Inventario', {tag: '@regression'}, () => {
     await inventory.sortBy('lohi');
     const prices = await inventory.getPrices();
     expect(prices).toEqual([...prices].sort((a, b) => a - b));
+    await inventory.sortBy('lohi');
+    await expect(inventory.sortSelect).toHaveValue('lohi');
   });
 
     test('ordena alfabéticamente de Z a A', async () => {
@@ -31,6 +33,8 @@ test.describe('Inventario', {tag: '@regression'}, () => {
     const names = await inventory.itemNames.allTextContents();
     const sortedNames = [...names].sort((a, b) => b.localeCompare(a));
     expect(names).toEqual(sortedNames);
+    await inventory.sortBy('za');
+    await expect(inventory.sortSelect).toHaveValue('za');
   });
 
    test('agregar producto al carrito y validar flujo de ida y vuelta', async ({ page }) => {
@@ -40,7 +44,7 @@ test.describe('Inventario', {tag: '@regression'}, () => {
     await expect(page).toHaveURL(/cart.html/);
     await expect(cart.itemNames).toHaveText('Sauce Labs Backpack');
     await cart.continueShoppingButton.click();
-    await expect(page).toHaveURL(/inventory.html/);;
+    await expect(page).toHaveURL(/inventory.html/);
   });
 
   test('quitar el producto elimina el contador del carrito', async () => {
